@@ -23,7 +23,7 @@ nginx:
   build: nginx
   links:
     - letsencrypt
-    - rocketchat:app_to_proxy
+    - mattermost:app_to_proxy
   environment:
     - MY_DOMAIN_NAME=chat.example.com
     - LETSENCRYPT_IP=letsencrypt
