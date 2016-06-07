@@ -1,5 +1,5 @@
-db:
-  build: db
+postgresql:
+  build: postgresql
   volumes:
     - ./volumes/db/var/lib/postgresql/data:/var/lib/postgresql/data
     - /etc/localtime:/etc/localtime:ro
@@ -9,10 +9,11 @@ db:
   #  - AWS_SECRET_ACCESS_KEY=XXXX
   #  - WALE_S3_PREFIX=s3://BUCKET_NAME/PATH
   #  - AWS_REGION=us-east-1
-app:
-  build: app
+
+mattermost:
+  build: mattermost
   links:
-    - db:db
+    - postgresql:db
   volumes:
     - ./volumes/app/mattermost/config:/mattermost/config:rw
     - ./volumes/app/mattermost/data:/mattermost/data:rw
